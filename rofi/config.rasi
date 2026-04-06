@@ -1,0 +1,32 @@
+configuration {
+    ime-mode: "drun";
+    show-icons: true;
+}
+
+
+window {
+    background-color: #1e1e2e;
+    width: 500px;
+}
+
+mainbox {
+    padding: 4px;
+    background-color: #1e1e2e;
+}
+
+listview {
+    lines: 6;
+    background-color: #1e1e2e;
+}
+
+element {
+    padding: 8px;
+    background-color: #1e1e2e;
+    text-color: #cdd6f4;
+}
+
+element selected {
+    background-color: #f38ba8;
+    text-color: #cdd6f4;
+}
+
