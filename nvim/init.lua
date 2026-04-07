@@ -51,9 +51,3 @@ vim.opt.laststatus = 3
 vim.api.nvim_set_hl(0, "LineNr", { fg = "#ffffff" })                       --Normal line
 vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#f9e2af", bold = true })    --Cursor line
 vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#fab387", bold = true })    --cursor
-
---Running a C file 
-vim.api.nvim_create_user_command('RunC', function()
-  vim.cmd('w') -- save file
-  vim.cmd('!gcc % -o %< && ./%<')  --Compile and run
-end, {})
