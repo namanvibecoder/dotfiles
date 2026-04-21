@@ -16,12 +16,7 @@ set $mod Mod4
 font pango:JetBrainsMono Nerd Font 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# Start XDG autostart .desktop files using dex. See also
-# https://wiki.archlinux.org/index.php/XDG_Autostart
-exec --no-startup-id dex --autostart --environment i3
+# text rendering and scalability on retina/hidpi displays (thanks to pango). #font pango:DejaVu Sans Mono 8 Start XDG autostart .desktop files using dex. See also https://wiki.archlinux.org/index.php/XDG_Autostart exec --no-startup-id dex --autostart --environment i3
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -183,19 +178,19 @@ bindsym $mod+shift+s exec pkill polybar && polybar top --config=~/.config/polyba
 # Start i3bar to display a workspace bar (plus the system information i3status
 
 #bar {
-#       status_command i3status
+ #     i3status = ~/.config/i3/i3bar/i3status.conf
 #}
 
-exec_always --no-startup-id feh --bg-scale ~/Pictures/naman4.jpg
+exec_always --no-startup-id feh --bg-scale ~/Pictures/IMAGE.jpg
 exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id xfsettingsd
 exec_always --no-startup-id export GTK_THEME=Greybird-dark
 exec_always --no-startup-id export GTK_APPLICATION_PREFER_DARK_THEME=1
-exec_always --no startup-id export XCURSOR_THEME=Bibata-Modern-Classic
-exec_always --no startup-id export XCURSOR_SIZE=20
+#exec_always --no startup-id export XCURSOR_THEME=Breeze_Snow 
+#exec_always --no startup-id export XCURSOR_SIZE=20
 exec --no-startup-id polybar top --config=~/.config/polybar/config.ini 
 exec --no-startup-id nm-applet
-
+exec --no-startup-id xrdb ~/.Xresources
 #Opening Browser
 bindsym $mod+b exec firefox
 
@@ -204,16 +199,24 @@ bindsym $mod+b exec firefox
 bindsym $mod+shift+e exec ~/.config/rofi/scripts/powermenu.sh 
 
 #Window Borders
-new_window pixel 2
-new_float pixel 2
-for_window [class=".*"] border pixel 2
+new_window pixel 1
+new_float pixel 1
+for_window [class=".*"] border pixel 1
 smart_borders on 
-client.focused          #89b4fa #89b4fa #000000 #89b4fa
-client.unfocused        #1e1e2e #1e1e2e #888888 #1e1e2e
+client.focused          #cba6f7 #cba6f7 #000000 #cba6f7
+client.unfocused #313244 #313244 #6c7086 #313244 #313244
+#client.unfocused        #1e1e2e #1e1e2e #888888 #1e1e2e
 client.focused_inactive #313244 #313244 #aaaaaa #313244
 
 #Gaps
-gaps inner 7
-gaps outer 1
+gaps inner 5
+gaps outer 0
 
-smart_gaps on
+#smart_gaps on
+
+#Flameshot
+bindsym Print exec flameshot gui
+
+#brightness control
+bindsym XF86MonBrightnessUp exec brightnessctl set +5% && dunstify -a brightness -h int:value:$(brightnessctl | grep -oP '\d+(?=%)') -r 9993 -t 800 " Brightness"
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%- && dunstify -a brightness -h int:value:$(brightnessctl | grep -oP '\d+(?=%)') -r 9993 -t 800 " Brightness"

@@ -27,6 +27,10 @@ require("lazy").setup({
         }
       })
     end
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
   }
 })
 
@@ -34,7 +38,7 @@ require("lazy").setup({
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.termguicolors = true
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 vim.opt.scrolloff = 8
 vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20"
 vim.opt.tabstop = 2
@@ -51,3 +55,17 @@ vim.opt.laststatus = 3
 vim.api.nvim_set_hl(0, "LineNr", { fg = "#ffffff" })                       --Normal line
 vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#f9e2af", bold = true })    --Cursor line
 vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#fab387", bold = true })    --cursor
+
+--Running a C file 
+vim.api.nvim_create_user_command('RunC', function()
+  vim.cmd('w') -- save file
+  vim.cmd('!gcc % -o %< && ./%<')  --Compile and run
+end, {})
+
+--Fuzzy finder
+vim.keymap.set("n", "<C-p>", function()
+  require("telescope.builtin").find_files({
+    hidden = true,
+    no_ignore = true,
+  })
+end, { desc = "Find All Files" })
