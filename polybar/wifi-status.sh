@@ -25,7 +25,7 @@ if [[ -n "$ssid" ]]; then
         icon="󰤟"   # very weak
     fi
 
-    echo "$icon"
+    echo "$icon  $ssid"
 else
     echo "󰤭 "
 fi

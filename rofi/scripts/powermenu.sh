@@ -6,7 +6,7 @@ reboot=" Reboot"
 lock=" Lock"
 suspend="⏾ Suspend"
 logout=" Logout"
-chosen=$(printf "%s\n%s\n%s\n%s\n%s" "$shutdown" "$reboot" "$lock" "$suspend" "$logout" | rofi -dmenu -i -theme ~/.config/rofi/themes/powermenu.rasi -p "Power")
+chosen=$(printf "%s\n%s\n%s\n%s\n%s" "$shutdown" "$reboot" "$lock" "$suspend" "$logout" | rofi -dmenu -i -theme ~/.config/rofi/themes/purple.rasi -p "Power")
 
 case "$chosen" in
     "$shutdown")
@@ -16,7 +16,7 @@ case "$chosen" in
         systemctl reboot
         ;;
     "$lock")
-        i3lock
+        xfce4-screensaver-command -l
         ;;
     "$suspend")
         systemctl suspend

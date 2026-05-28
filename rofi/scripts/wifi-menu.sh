@@ -1,6 +1,6 @@
 #!/bin/bash
 
-THEME="$HOME/.config/rofi/themes/powermenu.rasi"
+THEME="$HOME/.config/rofi/themes/purple.rasi"
 
 wifi_list=$(nmcli -t -f IN-USE,SSID,SECURITY dev wifi list | sed 's/:/  /g')
 
